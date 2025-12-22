@@ -12,7 +12,7 @@ type TimeLeft = {
 };
 
 export default function Home() {
-  const eventDate = new Date("2026-01-20T09:00:00");
+  const eventDate = new Date("2026-09-16T09:00:00");
 
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
@@ -73,7 +73,7 @@ export default function Home() {
     <section className="relative h-screen w-full overflow-hidden">
       {/* ================= Background ================= */}
       <Image
-        src="/hero.jpg"
+        src="/hero2.jpg"
         alt="Medical Congress"
         fill
         priority
