@@ -110,11 +110,18 @@ export default function Home() {
         </span>
 
         <h1 className="max-w-5xl text-4xl leading-tight tracking-tight sm:text-5xl md:text-6xl">
-          32nd International Congress Of
+          <span className="inline-flex items-start">
+            <span>32</span>
+            <sup className="ml-0.5 text-2xl leading-non text-white/70">
+              nd
+            </sup>
+          </span>{" "}
+          International Congress Of
           <span className="block bg-gradient-to-r font-bold from-orange-400 to-orange-300 bg-clip-text text-transparent">
             Pediatric Hepatology, Gastroenterology & Nutrition
           </span>
         </h1>
+
 
 
         {/* <p className="mt-6 max-w-2xl text-lg text-white/80">
