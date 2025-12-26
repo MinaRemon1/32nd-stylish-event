@@ -183,7 +183,7 @@ export default function Home() {
       )}
 
       {/* ================= Hero Section ================= */}
-      <section className="relative h-screen w-full overflow-hidden">
+      <section className="relative min-h-screen w-full overflow-hidden sm:h-screen">
         {/* Background */}
         <Image
           src="/hero2.jpg"
@@ -201,14 +201,14 @@ export default function Home() {
             ${isScrolled || isMobileMenuOpen ? "bg-white shadow-lg" : "bg-transparent"}
           `}
         >
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
             <Link href="/" className="flex items-center">
               <Image
                 src="/logo2.png"
                 width={60}
                 height={16}
                 alt="logo"
-                className="object-contain sm:w-75"
+                className="object-contain w-[75px] h-auto sm:w-[85px]"
               />
             </Link>
 
@@ -296,8 +296,8 @@ export default function Home() {
           </div>
         </nav>
 
-        {/* Hero Content */}
-        <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center text-white pt-20 sm:pt-24 sm:px-6">
+        {/* Hero Content - Adjusted for mobile */}
+        <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 text-center text-white pt-16 sm:pt-24 sm:px-6">
           <span className="mb-4 rounded-full border border-white/30 px-3 py-1 text-xs sm:text-sm tracking-wide text-white/80 sm:px-4">
             16 - 19 September 2026, Hurghada
           </span>
@@ -339,7 +339,7 @@ export default function Home() {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce sm:bottom-8">
           <div className="h-6 w-px bg-gradient-to-b from-transparent via-orange-400 to-transparent" />
         </div>
       </section>
@@ -640,7 +640,7 @@ export default function Home() {
                 width={80}
                 height={24}
                 alt="Congress Logo"
-                className="object-contain sm:w-100"
+                className="object-contain w-[100px] h-auto"
               />
               <p className="mt-3 max-w-md text-xs text-slate-600 sm:mt-4 sm:text-sm">
                 32nd International Congress of Pediatric Hepatology, Gastroenterology & Nutrition
