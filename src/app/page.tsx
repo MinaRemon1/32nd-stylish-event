@@ -72,56 +72,6 @@ export default function Home() {
     },
   ];
 
-  const stats = [
-    { number: "30+", label: "Sessions", icon: <PresentationIcon /> },
-    { number: "100+", label: "Speakers", icon: <SpeakerIcon /> },
-    { number: "15+", label: "Topics", icon: <TopicsIcon /> },
-    { number: "10+", label: "Workshops", icon: <WorkshopIcon /> },
-  ];
-
-  const topics = [
-    {
-      title: "Liver Disease",
-      description: "Genetic-metabolic, congenital and anatomical etiologies.",
-      icon: <BriefcaseMedical size={24} />,
-    },
-    {
-      title: "Gastrointestinal Disorders",
-      description: "Congenital, anatomical and functional disorders.",
-      icon: <Activity size={24} />, // Add size prop
-    },
-    {
-      title: "Infant & Child Nutrition",
-      description: "Normal developmental nutrition requirements.",
-      icon: <Baby size={24} />,
-    },
-    {
-      title: "Nutritional Disorders",
-      description: "Under-nutrition, over-nutrition and malnutrition.",
-      icon: <LeafyGreen size={24} />,
-    },
-    {
-      title: "Portal Hypertension",
-      description: "Hepatic vascular disorders management.",
-      icon: <HeartPulse size={24} />,
-    },
-    {
-      title: "Hepato-biliary Surgery",
-      description: "Advanced surgical techniques and transplantation.",
-      icon: <SquareActivity size={24} />,
-    },
-    {
-      title: "GI & Hepatic Immunity",
-      description: "System immunity and autoimmune conditions.",
-      icon: <ShieldPlus size={24} />,
-    },
-    {
-      title: "Human Microbiome",
-      description: "Gut microbiome research and clinical applications.",
-      icon: <Microscope size={24} />,
-    },
-  ];
-
   /* ================= Countdown ================= */
   useEffect(() => {
     const timer = setInterval(() => {
@@ -251,19 +201,19 @@ export default function Home() {
             ${isScrolled || isMobileMenuOpen ? "bg-white shadow-lg" : "bg-transparent"}
           `}
         >
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
             <Link href="/" className="flex items-center">
               <Image
                 src="/logo2.png"
-                width={75}
-                height={20}
+                width={60}
+                height={16}
                 alt="logo"
-                className="object-contain"
+                className="object-contain sm:w-75"
               />
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-12">
+            <div className="hidden md:flex items-center gap-8 lg:gap-12">
               <button
                 onClick={() => scrollToSection('about')}
                 className={`text-sm font-medium tracking-wide transition hover:text-orange-500 ${
@@ -317,7 +267,7 @@ export default function Home() {
               isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
             }`}
           >
-            <div className="px-6 py-4 space-y-4">
+            <div className="px-4 py-4 space-y-3 sm:px-6">
               <button
                 onClick={() => scrollToSection('about')}
                 className="block w-full text-left text-sm font-medium text-slate-800 hover:text-orange-500 py-2 transition-colors"
@@ -347,30 +297,30 @@ export default function Home() {
         </nav>
 
         {/* Hero Content */}
-        <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center text-white pt-24">
-          <span className="mb-4 rounded-full border border-white/30 px-4 py-1 text-sm tracking-wide text-white/80">
+        <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center text-white pt-20 sm:pt-24 sm:px-6">
+          <span className="mb-4 rounded-full border border-white/30 px-3 py-1 text-xs sm:text-sm tracking-wide text-white/80 sm:px-4">
             16 - 19 September 2026, Hurghada
           </span>
 
-          <h1 className="max-w-5xl text-4xl leading-tight tracking-tight sm:text-5xl md:text-6xl">
+          <h1 className="max-w-5xl text-2xl leading-tight tracking-tight sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
             <span className="inline-flex items-start">
               <span className="text-white">32</span>
-              <sup className="ml-0.5 text-2xl leading-none text-white/70">
+              <sup className="ml-0.5 text-lg leading-none text-white/70 sm:text-xl md:text-2xl">
                 nd
               </sup>
             </span>{" "}
             International Congress Of
-            <span className="block bg-gradient-to-r font-bold from-orange-400 to-orange-300 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r font-bold from-orange-400 to-orange-300 bg-clip-text text-transparent mt-2">
               Pediatric Hepatology, Gastroenterology & Nutrition
             </span>
           </h1>
 
-          <p className="mt-6 max-w-2xl text-lg text-white/90">
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/90 sm:text-base sm:mt-6 md:text-lg">
             Join global experts to advance pediatric care through innovation, collaboration, and excellence.
           </p>
 
           {/* Countdown */}
-          <div className="mt-12 grid grid-cols-4 gap-4 sm:gap-6">
+          <div className="mt-8 sm:mt-12 grid grid-cols-4 gap-2 sm:gap-4 md:gap-6">
             <CountdownItem label="Days" value={timeLeft.days} />
             <CountdownItem label="Hours" value={timeLeft.hours} />
             <CountdownItem label="Minutes" value={timeLeft.minutes} />
@@ -378,10 +328,10 @@ export default function Home() {
           </div>
 
           {/* CTA */}
-          <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row">
+          <div className="mt-8 sm:mt-12 flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
             <a
               href="#register"
-              className="rounded-full bg-gradient-to-r from-orange-500 to-orange-400 px-8 py-4 text-base font-medium text-white transition hover:scale-[1.03] hover:shadow-xl hover:shadow-orange-500/30"
+              className="rounded-full bg-gradient-to-r from-orange-500 to-orange-400 px-6 py-3 text-sm font-medium text-white transition hover:scale-[1.03] hover:shadow-xl hover:shadow-orange-500/30 sm:px-8 sm:py-4 sm:text-base"
             >
               Register Now
             </a>
@@ -395,19 +345,19 @@ export default function Home() {
       </section>
 
       {/* ================= About Section ================= */}
-      <section ref={aboutRef} className="py-24 bg-white">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+      <section ref={aboutRef} className="py-16 bg-white sm:py-20 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
             <div>
-              <span className="rounded-full bg-gradient-to-r from-orange-100 to-orange-50 px-4 py-2 text-sm font-medium text-orange-700">
+              <span className="rounded-full bg-gradient-to-r from-orange-100 to-orange-50 px-3 py-1.5 text-xs font-medium text-orange-700 sm:px-4 sm:py-2 sm:text-sm">
                 Welcome Message
               </span>
-              <h2 className="mt-6 text-4xl font-bold text-slate-900 sm:text-5xl">
+              <h2 className="mt-4 text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl lg:text-5xl">
                 32nd International Congress
-                <span className="block text-orange-500">Advancing Pediatric Care</span>
+                <span className="block text-orange-500 mt-2">Advancing Pediatric Care</span>
               </h2>
               
-              <div className="mt-6 space-y-4 text-lg leading-relaxed text-slate-700">
+              <div className="mt-4 space-y-4 text-base leading-relaxed text-slate-700 sm:mt-6 sm:text-lg">
                 <p>
                   On behalf of the International Congress of Pediatric Hepatology, Gastroenterology and Nutrition (ICPHGN) board, we are honored to extend a warm invitation to the 32nd ICPHGN, taking place in the beautiful coastal city of Hurghada, Egypt from 16 - 19 September 2026.
                 </p>
@@ -427,38 +377,46 @@ export default function Home() {
             </div>
 
             <div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-8">
+              <h3 className="text-xl font-bold text-slate-900 mb-6 sm:text-2xl">
                 Congress <span className="text-orange-500">Statistics</span>
               </h3>
-              <div className="grid grid-cols-2 gap-6">
-                {stats.map((stat, index) => (
+              
+              {/* Stats Grid */}
+              <div className="grid grid-cols-2 gap-4 sm:gap-6">
+                {[
+                  { number: "30+", label: "Sessions", icon: <PresentationIcon /> },
+                  { number: "100+", label: "Speakers", icon: <SpeakerIcon /> },
+                  { number: "15+", label: "Topics", icon: <TopicsIcon /> },
+                  { number: "10+", label: "Workshops", icon: <WorkshopIcon /> },
+                ].map((stat, index) => (
                   <div
                     key={index}
-                    className="group rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:border-orange-300"
+                    className="group rounded-xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 shadow-sm hover:shadow-md transition-all duration-300 hover:border-orange-300 sm:rounded-2xl sm:p-6"
                   >
-                    <div className="flex items-center gap-4">
-                      <div className="rounded-lg bg-gradient-to-r from-orange-100 to-orange-50 p-3 group-hover:scale-110 transition-transform">
-                        <div className="h-6 w-6 text-orange-600">
+                    <div className="flex items-center gap-3 sm:gap-4">
+                      <div className="rounded-lg bg-gradient-to-r from-orange-100 to-orange-50 p-2 group-hover:scale-110 transition-transform sm:p-3">
+                        <div className="h-5 w-5 text-orange-600 sm:h-6 sm:w-6">
                           {stat.icon}
                         </div>
                       </div>
                       <div>
-                        <div className="text-3xl font-bold text-slate-900">{stat.number}</div>
-                        <div className="mt-1 text-sm font-medium text-slate-700">{stat.label}</div>
+                        <div className="text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">{stat.number}</div>
+                        <div className="mt-0.5 text-xs font-medium text-slate-700 sm:text-sm">{stat.label}</div>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
               
-              <div className="mt-12 rounded-2xl border border-slate-200 bg-gradient-to-br from-orange-50 to-white p-8">
-                <h4 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+              {/* Key Objectives */}
+              <div className="mt-8 rounded-xl border border-slate-200 bg-gradient-to-br from-orange-50 to-white p-6 sm:mt-12 sm:rounded-2xl sm:p-8">
+                <h4 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-3 sm:text-xl">
                   <div className="rounded-lg bg-gradient-to-r from-orange-100 to-orange-50 p-2">
                     <TargetIcon />
                   </div>
                   Key Objectives
                 </h4>
-                <ul className="space-y-4">
+                <ul className="space-y-3 sm:space-y-4">
                   {[
                     "Advance global collaboration in pediatric gastroenterology and hepatology",
                     "Share cutting-edge research and innovative clinical practices",
@@ -468,7 +426,7 @@ export default function Home() {
                   ].map((item, index) => (
                     <li key={index} className="flex items-start gap-3">
                       <div className="mt-1.5 h-2 w-2 rounded-full bg-orange-500 flex-shrink-0"></div>
-                      <span className="text-slate-700">{item}</span>
+                      <span className="text-sm text-slate-700 sm:text-base">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -479,31 +437,31 @@ export default function Home() {
       </section>
 
       {/* ================= Speakers Section ================= */}
-      <section ref={speakersRef} className="py-24 bg-gradient-to-b from-white to-slate-50">
-        <div className="mx-auto max-w-7xl px-6">
+      <section ref={speakersRef} className="py-16 bg-gradient-to-b from-white to-slate-50 sm:py-20 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="text-center">
-            <span className="rounded-full bg-gradient-to-r from-orange-100 to-orange-50 px-4 py-2 text-sm font-medium text-orange-700">
+            <span className="rounded-full bg-gradient-to-r from-orange-100 to-orange-50 px-3 py-1.5 text-xs font-medium text-orange-700 sm:px-4 sm:py-2 sm:text-sm">
               World-Class Faculty
             </span>
-            <h2 className="mt-6 text-4xl font-bold text-slate-900 sm:text-5xl">
+            <h2 className="mt-4 text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl lg:text-5xl">
               Meet Our <span className="text-orange-500">Distinguished Speakers</span>
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-700">
+            <p className="mx-auto mt-3 max-w-2xl text-sm text-slate-700 sm:mt-4 sm:text-base md:text-lg">
               Learn from the world&apos;s leading experts in pediatric hepatology, gastroenterology, and nutrition.
             </p>
           </div>
 
-          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             {speakers.map((speaker) => (
               <div
                 key={speaker.id}
-                className={`group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:scale-[1.02] hover:border-orange-300 hover:shadow-xl ${
+                className={`group relative overflow-hidden rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-all duration-300 hover:scale-[1.02] hover:border-orange-300 hover:shadow-xl sm:rounded-2xl sm:p-6 ${
                   activeSpeaker === speaker.id ? "border-orange-400 shadow-lg" : ""
                 }`}
                 onMouseEnter={() => setActiveSpeaker(speaker.id)}
                 onMouseLeave={() => setActiveSpeaker(null)}
               >
-                <div className="relative mx-auto h-48 w-48 overflow-hidden rounded-full">
+                <div className="relative mx-auto h-32 w-32 overflow-hidden rounded-full sm:h-40 sm:w-40 md:h-48 md:w-48">
                   <div className="absolute inset-0 rounded-full bg-gradient-to-br from-orange-100 to-transparent" />
                   <Image
                     src={speaker.photo}
@@ -512,10 +470,10 @@ export default function Home() {
                     className="object-cover p-2"
                   />
                 </div>
-                <div className="mt-6 text-center">
-                  <h3 className="text-xl font-bold text-slate-900">{speaker.name}</h3>
-                  <p className="mt-2 font-medium text-orange-600">{speaker.title}</p>
-                  <p className="mt-1 text-sm text-slate-600">{speaker.affiliation}</p>
+                <div className="mt-4 text-center sm:mt-6">
+                  <h3 className="text-lg font-bold text-slate-900 sm:text-xl">{speaker.name}</h3>
+                  <p className="mt-1 font-medium text-orange-600 text-sm sm:text-base">{speaker.title}</p>
+                  <p className="mt-0.5 text-xs text-slate-600 sm:text-sm">{speaker.affiliation}</p>
                 </div>
               </div>
             ))}
@@ -524,36 +482,77 @@ export default function Home() {
       </section>
 
       {/* ================= Topics Section ================= */}
-      <section ref={programRef} className="py-24 bg-white">
-        <div className="mx-auto max-w-7xl px-6">
+      <section ref={programRef} className="py-16 bg-white sm:py-20 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="text-center">
-            <span className="rounded-full bg-gradient-to-r from-orange-100 to-orange-50 px-4 py-2 text-sm font-medium text-orange-700">
+            <span className="rounded-full bg-gradient-to-r from-orange-100 to-orange-50 px-3 py-1.5 text-xs font-medium text-orange-700 sm:px-4 sm:py-2 sm:text-sm">
               Scientific Program
             </span>
-            <h2 className="mt-6 text-4xl font-bold text-slate-900 sm:text-5xl">
+            <h2 className="mt-4 text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl lg:text-5xl">
               Congress <span className="text-orange-500">Topics</span>
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-700">
+            <p className="mx-auto mt-3 max-w-2xl text-sm text-slate-700 sm:mt-4 sm:text-base md:text-lg">
               Comprehensive coverage of the latest advancements in pediatric hepatology, gastroenterology and nutrition.
             </p>
           </div>
 
-          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {topics.map((topic, index) => (
+          <div className="mt-12 grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                title: "Liver Disease",
+                description: "Genetic-metabolic, congenital and anatomical etiologies.",
+                icon: <BriefcaseMedical className="h-5 w-5 sm:h-6 sm:w-6" />,
+              },
+              {
+                title: "Gastrointestinal Disorders",
+                description: "Congenital, anatomical and functional disorders.",
+                icon: <Activity className="h-5 w-5 sm:h-6 sm:w-6" />,
+              },
+              {
+                title: "Infant & Child Nutrition",
+                description: "Normal developmental nutrition requirements.",
+                icon: <Baby className="h-5 w-5 sm:h-6 sm:w-6" />,
+              },
+              {
+                title: "Nutritional Disorders",
+                description: "Under-nutrition, over-nutrition and malnutrition.",
+                icon: <LeafyGreen className="h-5 w-5 sm:h-6 sm:w-6" />,
+              },
+              {
+                title: "Portal Hypertension",
+                description: "Hepatic vascular disorders management.",
+                icon: <HeartPulse className="h-5 w-5 sm:h-6 sm:w-6" />,
+              },
+              {
+                title: "Hepato-biliary Surgery",
+                description: "Advanced surgical techniques and transplantation.",
+                icon: <SquareActivity className="h-5 w-5 sm:h-6 sm:w-6" />,
+              },
+              {
+                title: "GI & Hepatic Immunity",
+                description: "System immunity and autoimmune conditions.",
+                icon: <ShieldPlus className="h-5 w-5 sm:h-6 sm:w-6" />,
+              },
+              {
+                title: "Human Microbiome",
+                description: "Gut microbiome research and clinical applications.",
+                icon: <Microscope className="h-5 w-5 sm:h-6 sm:w-6" />,
+              },
+            ].map((topic, index) => (
               <div
                 key={index}
-                className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:border-orange-300"
+                className="group relative overflow-hidden rounded-xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 shadow-sm hover:shadow-md transition-all duration-300 hover:border-orange-300 sm:rounded-2xl sm:p-6"
               >
-                <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-gradient-to-br from-orange-100 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+                <div className="absolute -right-4 -top-4 h-16 w-16 rounded-full bg-gradient-to-br from-orange-100 to-transparent opacity-0 transition-opacity group-hover:opacity-100 sm:-right-6 sm:-top-6 sm:h-24 sm:w-24" />
                 <div className="relative">
-                  <div className="mb-4 inline-flex rounded-lg bg-gradient-to-r from-orange-100 to-orange-50 p-3 group-hover:scale-110 transition-transform">
-                    <div className="h-6 w-6 text-orange-600">
+                  <div className="mb-3 inline-flex rounded-lg bg-gradient-to-r from-orange-100 to-orange-50 p-2 group-hover:scale-110 transition-transform sm:mb-4 sm:p-3">
+                    <div className="text-orange-600">
                       {topic.icon}
                     </div>
                   </div>
-                  <h3 className="text-lg font-semibold text-slate-900 mb-2">{topic.title}</h3>
+                  <h3 className="text-base font-semibold text-slate-900 mb-1.5 sm:text-lg sm:mb-2">{topic.title}</h3>
                   {topic.description && (
-                    <p className="text-sm text-slate-600">{topic.description}</p>
+                    <p className="text-xs text-slate-600 sm:text-sm">{topic.description}</p>
                   )}
                 </div>
               </div>
@@ -563,67 +562,67 @@ export default function Home() {
       </section>
 
       {/* ================= Venue Section ================= */}
-      <section ref={venueRef} className="py-24 bg-gradient-to-b from-white to-slate-50">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+      <section ref={venueRef} className="py-16 bg-gradient-to-b from-white to-slate-50 sm:py-20 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
             <div>
-              <span className="rounded-full bg-gradient-to-r from-orange-100 to-orange-50 px-4 py-2 text-sm font-medium text-orange-700">
+              <span className="rounded-full bg-gradient-to-r from-orange-100 to-orange-50 px-3 py-1.5 text-xs font-medium text-orange-700 sm:px-4 sm:py-2 sm:text-sm">
                 Venue & Location
               </span>
-              <h2 className="mt-6 text-4xl font-bold text-slate-900 sm:text-5xl">
+              <h2 className="mt-4 text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl lg:text-5xl">
                 Continental Hotel <span className="text-orange-500">Hurghada</span>
               </h2>
-              <p className="mt-6 text-lg leading-relaxed text-slate-700">
+              <p className="mt-4 text-base leading-relaxed text-slate-700 sm:mt-6 sm:text-lg">
                 Located on the beautiful Red Sea coast, the Continental Hotel Hurghada offers state-of-the-art facilities in a breathtaking setting. Perfect for combining professional development with relaxation in one of Egypt&apos;s premier tourist destinations.
               </p>
               
-              <div className="mt-8 space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="mt-1 rounded-full bg-gradient-to-r from-orange-100 to-orange-50 p-3">
+              <div className="mt-6 space-y-4 sm:mt-8 sm:space-y-6">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="mt-1 rounded-full bg-gradient-to-r from-orange-100 to-orange-50 p-2 sm:p-3">
                     <CalendarIcon />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-900">Dates</h4>
-                    <p className="text-slate-700">16 - 19 September 2026</p>
+                    <h4 className="font-semibold text-slate-900 text-sm sm:text-base">Dates</h4>
+                    <p className="text-slate-700 text-sm sm:text-base">16 - 19 September 2026</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <div className="mt-1 rounded-full bg-gradient-to-r from-orange-100 to-orange-50 p-3">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="mt-1 rounded-full bg-gradient-to-r from-orange-100 to-orange-50 p-2 sm:p-3">
                     <LocationIcon />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-900">Location</h4>
-                    <p className="text-slate-700">Continental Hotel Hurghada</p>
-                    <p className="text-slate-600">Red Sea Governorate, Egypt</p>
+                    <h4 className="font-semibold text-slate-900 text-sm sm:text-base">Location</h4>
+                    <p className="text-slate-700 text-sm sm:text-base">Continental Hotel Hurghada</p>
+                    <p className="text-slate-600 text-sm sm:text-base">Red Sea Governorate, Egypt</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <div className="mt-1 rounded-full bg-gradient-to-r from-orange-100 to-orange-50 p-3">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="mt-1 rounded-full bg-gradient-to-r from-orange-100 to-orange-50 p-2 sm:p-3">
                     <UsersIcon />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-900">Facilities</h4>
-                    <p className="text-slate-700">Conference halls, breakout rooms</p>
-                    <p className="text-slate-600">Hotel accommodation, dining options</p>
+                    <h4 className="font-semibold text-slate-900 text-sm sm:text-base">Facilities</h4>
+                    <p className="text-slate-700 text-sm sm:text-base">Conference halls, breakout rooms</p>
+                    <p className="text-slate-600 text-sm sm:text-base">Hotel accommodation, dining options</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="relative">
-              <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-lg">
+              <div className="overflow-hidden rounded-xl border border-slate-200 shadow-lg sm:rounded-2xl">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3549.840002661742!2d33.824742975593196!3d27.161323849362223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145280c3b84f28d3%3A0x6c0c82b597202ad4!2sContinental%20Hotel%20Hurghada!5e0!3m2!1sen!2seg!4v1766707178462!5m2!1sen!2seg"
                   width="100%"
-                  height="450"
+                  height="300"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Continental Hotel Hurghada Location"
-                  className="w-full"
+                  className="w-full sm:h-[350px] md:h-[400px] lg:h-[450px]"
                 />
               </div>
             </div>
@@ -632,52 +631,52 @@ export default function Home() {
       </section>
 
       {/* ================= Footer ================= */}
-      <footer className="border-t border-slate-200 bg-white py-12">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
+      <footer className="border-t border-slate-200 bg-white py-8 sm:py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="flex flex-col items-center justify-between gap-6 md:flex-row md:gap-8">
             <div>
               <Image
                 src="/logo2.png"
-                width={100}
-                height={30}
+                width={80}
+                height={24}
                 alt="Congress Logo"
-                className="object-contain"
+                className="object-contain sm:w-100"
               />
-              <p className="mt-4 max-w-md text-sm text-slate-600">
+              <p className="mt-3 max-w-md text-xs text-slate-600 sm:mt-4 sm:text-sm">
                 32nd International Congress of Pediatric Hepatology, Gastroenterology & Nutrition
               </p>
             </div>
             
-            <div className="flex flex-wrap justify-center gap-6">
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
               <button
                 onClick={() => scrollToSection('about')}
-                className="text-sm font-medium text-slate-700 hover:text-orange-500 transition-colors"
+                className="text-xs font-medium text-slate-700 hover:text-orange-500 transition-colors sm:text-sm"
               >
                 About
               </button>
               <button
                 onClick={() => scrollToSection('speakers')}
-                className="text-sm font-medium text-slate-700 hover:text-orange-500 transition-colors"
+                className="text-xs font-medium text-slate-700 hover:text-orange-500 transition-colors sm:text-sm"
               >
                 Speakers
               </button>
               <button
                 onClick={() => scrollToSection('program')}
-                className="text-sm font-medium text-slate-700 hover:text-orange-500 transition-colors"
+                className="text-xs font-medium text-slate-700 hover:text-orange-500 transition-colors sm:text-sm"
               >
                 Topics
               </button>
               <button
                 onClick={() => scrollToSection('venue')}
-                className="text-sm font-medium text-slate-700 hover:text-orange-500 transition-colors"
+                className="text-xs font-medium text-slate-700 hover:text-orange-500 transition-colors sm:text-sm"
               >
                 Venue
               </button>
             </div>
           </div>
           
-          <div className="mt-8 border-t border-slate-200 pt-8 text-center">
-            <p className="text-sm text-slate-500">
+          <div className="mt-6 border-t border-slate-200 pt-6 text-center sm:mt-8 sm:pt-8">
+            <p className="text-xs text-slate-500 sm:text-sm">
               © 2026 32nd International Congress of Pediatric Hepatology, Gastroenterology & Nutrition. All rights reserved.
             </p>
           </div>
@@ -690,11 +689,11 @@ export default function Home() {
 /* ================= Countdown Item ================= */
 function CountdownItem({ label, value }: { label: string; value: number }) {
   return (
-    <div className="flex min-w-[72px] flex-col items-center rounded-xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur-md">
-      <span className="text-3xl font-semibold tabular-nums text-white">
+    <div className="flex min-w-[60px] flex-col items-center rounded-lg border border-white/20 bg-white/10 px-2 py-2 backdrop-blur-md sm:min-w-[72px] sm:rounded-xl sm:px-4 sm:py-3">
+      <span className="text-xl font-semibold tabular-nums text-white sm:text-2xl md:text-3xl">
         {String(value).padStart(2, "0")}
       </span>
-      <span className="mt-1 text-xs font-medium uppercase tracking-widest text-white/90">
+      <span className="mt-0.5 text-[10px] font-medium uppercase tracking-widest text-white/90 sm:mt-1 sm:text-xs">
         {label}
       </span>
     </div>
@@ -702,12 +701,10 @@ function CountdownItem({ label, value }: { label: string; value: number }) {
 }
 
 /* ================= Custom SVG Icons ================= */
-// Removed ArrowRightIcon as it was unused
-
 function CalendarIcon() {
   return (
     <svg 
-      className="h-5 w-5 text-orange-600" 
+      className="h-4 w-4 text-orange-600 sm:h-5 sm:w-5" 
       fill="none" 
       viewBox="0 0 24 24" 
       stroke="currentColor"
@@ -725,7 +722,7 @@ function CalendarIcon() {
 function LocationIcon() {
   return (
     <svg 
-      className="h-5 w-5 text-orange-600" 
+      className="h-4 w-4 text-orange-600 sm:h-5 sm:w-5" 
       fill="none" 
       viewBox="0 0 24 24" 
       stroke="currentColor"
@@ -749,7 +746,7 @@ function LocationIcon() {
 function UsersIcon() {
   return (
     <svg 
-      className="h-5 w-5 text-orange-600" 
+      className="h-4 w-4 text-orange-600 sm:h-5 sm:w-5" 
       fill="none" 
       viewBox="0 0 24 24" 
       stroke="currentColor"
@@ -766,7 +763,7 @@ function UsersIcon() {
 
 function TargetIcon() {
   return (
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <svg className="h-4 w-4 text-orange-600 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
     </svg>
   );
@@ -775,7 +772,7 @@ function TargetIcon() {
 /* ================= Statistics Icons ================= */
 function PresentationIcon() {
   return (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <svg className="h-5 w-5 text-orange-600 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
     </svg>
   );
@@ -783,7 +780,7 @@ function PresentationIcon() {
 
 function SpeakerIcon() {
   return (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <svg className="h-5 w-5 text-orange-600 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
     </svg>
   );
@@ -791,7 +788,7 @@ function SpeakerIcon() {
 
 function TopicsIcon() {
   return (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <svg className="h-5 w-5 text-orange-600 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
     </svg>
   );
@@ -799,7 +796,7 @@ function TopicsIcon() {
 
 function WorkshopIcon() {
   return (
-    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <svg className="h-5 w-5 text-orange-600 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
     </svg>
   );
