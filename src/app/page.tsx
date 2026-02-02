@@ -330,7 +330,7 @@ export default function Home() {
           {/* CTA */}
           <div className="mt-8 sm:mt-12 flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
             <a
-              href="#register"
+              href="/register"
               className="rounded-full bg-gradient-to-r from-orange-500 to-orange-400 px-6 py-3 text-sm font-medium text-white transition hover:scale-[1.03] hover:shadow-xl hover:shadow-orange-500/30 sm:px-8 sm:py-4 sm:text-base"
             >
               Register Now
@@ -434,6 +434,15 @@ export default function Home() {
             </div>
           </div>
         </div>
+        {/* CTA */}
+        <div className="mt-8 flex flex-col items-center gap-3 px-4 sm:mt-12 sm:flex-row sm:justify-center sm:gap-4 sm:px-6">
+          <a
+            href="/register"
+            className="rounded-full bg-gradient-to-r from-orange-500 to-orange-400 px-6 py-3 text-sm font-medium text-white transition hover:scale-[1.03] hover:shadow-xl hover:shadow-orange-500/30 sm:px-8 sm:py-4 sm:text-base"
+          >
+            Register Now
+          </a>
+        </div>
       </section>
 
       {/* ================= Speakers Section ================= */}
@@ -478,6 +487,15 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+        {/* CTA */}
+        <div className="mt-8 flex flex-col items-center gap-3 px-4 sm:mt-12 sm:flex-row sm:justify-center sm:gap-4 sm:px-6">
+          <a
+            href="/register"
+            className="rounded-full bg-gradient-to-r from-orange-500 to-orange-400 px-6 py-3 text-sm font-medium text-white transition hover:scale-[1.03] hover:shadow-xl hover:shadow-orange-500/30 sm:px-8 sm:py-4 sm:text-base"
+          >
+            Register Now
+          </a>
         </div>
       </section>
 
@@ -559,6 +577,15 @@ export default function Home() {
             ))}
           </div>
         </div>
+        {/* CTA */}
+        <div className="mt-8 flex flex-col items-center gap-3 px-4 sm:mt-12 sm:flex-row sm:justify-center sm:gap-4 sm:px-6">
+          <a
+            href="/register"
+            className="rounded-full bg-gradient-to-r from-orange-500 to-orange-400 px-6 py-3 text-sm font-medium text-white transition hover:scale-[1.03] hover:shadow-xl hover:shadow-orange-500/30 sm:px-8 sm:py-4 sm:text-base"
+          >
+            Register Now
+          </a>
+        </div>
       </section>
 
       {/* ================= Venue Section ================= */}
@@ -627,6 +654,15 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+        {/* CTA */}
+        <div className="mt-8 flex flex-col items-center gap-3 px-4 sm:mt-12 sm:flex-row sm:justify-center sm:gap-4 sm:px-6">
+          <a
+            href="/register"
+            className="rounded-full bg-gradient-to-r from-orange-500 to-orange-400 px-6 py-3 text-sm font-medium text-white transition hover:scale-[1.03] hover:shadow-xl hover:shadow-orange-500/30 sm:px-8 sm:py-4 sm:text-base"
+          >
+            Register Now
+          </a>
         </div>
       </section>
 
