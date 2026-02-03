@@ -49,26 +49,74 @@ export default function Home() {
     {
       id: 1,
       name: "Prof. Carlos Lifschitz",
-      title: "Pediatric Nutrition & Gastroenterology Expert",
+      title: "",
       affiliation: "Argentina",
-      photo: "/speaker1.png",
-      topics: ["NAFLD in Children", "Liver Transplantation"],
+      photo: "/speaker1.JPG",
+      topics: [],
     },
     {
       id: 2,
       name: "Prof. Elizabeth Tayler",
-      title: "Public Health Expert",
+      title: "",
       affiliation: "United Kingdom",
-      photo: "/speaker2.png",
-      topics: ["IBD Management", "Nutritional Therapy"],
+      photo: "/speaker2.JPG",
+      topics: [],
     },
     {
       id: 3,
-      name: "Prof. Abdullah Shamsah",
-      title: "Pediatric and Emergency Expert",
-      affiliation: "Kuwait",
-      photo: "/speaker3.png",
-      topics: ["Enteral Nutrition", "Growth Failure"],
+      name: "Ahmed Abobaker",
+      title: "",
+      affiliation: "United States",
+      photo: "/speaker3.JPG",
+      topics: [],
+    },
+    {
+      id: 4,
+      name: "Yasser Elsayed",
+      title: "",
+      affiliation: "Canada",
+      photo: "/speaker4.JPG",
+      topics: [],
+    },
+    {
+      id: 5,
+      name: "George Yanni",
+      title: "",
+      affiliation: "United States",
+      photo: "/speaker5.JPG",
+      topics: [""],
+    },
+    {
+      id: 6,
+      name: "Naglaa Kamal",
+      title: "",
+      affiliation: "Saudi Arabia",
+      photo: "/speaker6.jpeg",
+      topics: [],
+    },
+    {
+      id: 7,
+      name: "Jose Spolidoro",
+      title: "",
+      affiliation: "Brazil",
+      photo: "/speaker7.JPG",
+      topics: [],
+    },
+    {
+      id: 8,
+      name: "Giorgina Mieli-Vergani",
+      title: "",
+      affiliation: "Italy",
+      photo: "/speaker8.JPG",
+      topics: [],
+    },
+    {
+      id: 9,
+      name: "Diego Vergani",
+      title: "",
+      affiliation: "Italy",
+      photo: "/speaker9.JPG",
+      topics: [],
     },
   ];
 
@@ -238,6 +286,14 @@ export default function Home() {
               >
                 Topics
               </button>
+              <Link
+                href="/abstract"
+                className={`text-sm font-medium tracking-wide transition hover:text-orange-500 ${
+                  isScrolled ? "text-slate-800" : "text-white"
+                }`}
+              >
+                Abstract
+              </Link>
               <button
                 onClick={() => scrollToSection('venue')}
                 className={`text-sm font-medium tracking-wide transition hover:text-orange-500 ${
@@ -286,6 +342,12 @@ export default function Home() {
               >
                 Topics
               </button>
+              <Link
+                href="/abstract"
+                className="block w-full text-left text-sm font-medium text-slate-800 hover:text-orange-500 py-2 transition-colors"
+              >
+                Abstract
+              </Link>
               <button
                 onClick={() => scrollToSection('venue')}
                 className="block w-full text-left text-sm font-medium text-slate-800 hover:text-orange-500 py-2 transition-colors"
@@ -470,13 +532,12 @@ export default function Home() {
                 onMouseEnter={() => setActiveSpeaker(speaker.id)}
                 onMouseLeave={() => setActiveSpeaker(null)}
               >
-                <div className="relative mx-auto h-32 w-32 overflow-hidden rounded-full sm:h-40 sm:w-40 md:h-48 md:w-48">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-orange-100 to-transparent" />
+                <div className="relative mx-auto h-32 w-32 overflow-hidden rounded-full bg-slate-100 ring-4 ring-white shadow-sm sm:h-40 sm:w-40 md:h-48 md:w-48">
                   <Image
                     src={speaker.photo}
                     alt={speaker.name}
                     fill
-                    className="object-cover p-2"
+                    className="object-cover object-center"
                   />
                 </div>
                 <div className="mt-4 text-center sm:mt-6">
@@ -702,6 +763,12 @@ export default function Home() {
               >
                 Topics
               </button>
+              <Link
+                href="/abstract"
+                className="text-xs font-medium text-slate-700 hover:text-orange-500 transition-colors sm:text-sm"
+              >
+                Abstract
+              </Link>
               <button
                 onClick={() => scrollToSection('venue')}
                 className="text-xs font-medium text-slate-700 hover:text-orange-500 transition-colors sm:text-sm"
