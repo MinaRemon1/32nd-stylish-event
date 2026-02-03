@@ -496,8 +496,71 @@ export default function Home() {
             </div>
           </div>
         </div>
+      {/* CTA */}
+      <div className="mt-8 flex flex-col items-center gap-3 px-4 sm:mt-12 sm:flex-row sm:justify-center sm:gap-4 sm:px-6">
+        <a
+          href="/register"
+          className="rounded-full bg-gradient-to-r from-orange-500 to-orange-400 px-6 py-3 text-sm font-medium text-white transition hover:scale-[1.03] hover:shadow-xl hover:shadow-orange-500/30 sm:px-8 sm:py-4 sm:text-base"
+        >
+          Register Now
+        </a>
+      </div>
+    </section>
+
+      {/* ================= Presidents Section ================= */}
+      <section className="py-10 bg-white sm:py-14 md:py-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="text-center">
+            <span className="rounded-full bg-gradient-to-r from-orange-100 to-orange-50 px-3 py-1.5 text-xs font-medium text-orange-700 sm:px-4 sm:py-2 sm:text-sm">
+              Leadership
+            </span>
+            <h2 className="mt-4 text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
+              Meet The <span className="text-orange-500">Presidents</span>
+            </h2>
+          </div>
+
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:gap-10">
+            {[
+              {
+                id: "congress-president",
+                role: "President of Congress",
+                image: "/president1.png",
+                name: "Prof. Mortada El-Shabrawi",
+                title: "Conference President"
+              },
+              {
+                id: "society-president",
+                role: "President of Society",
+                image: "/president2.png",
+                name: "Prof. Talal Abdelaziz",
+                title: "ISMS President"
+              },
+            ].map((president) => (
+              <div
+                key={president.id}
+                className="rounded-2xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-6 text-center shadow-sm"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-orange-500">
+                  {president.role}
+                </p>
+                <div className="relative mt-4 mx-auto h-44 w-44 overflow-hidden rounded-full bg-slate-100 ring-4 ring-white shadow-sm sm:h-52 sm:w-52 md:h-60 md:w-60">
+                  <Image
+                    src={president.image}
+                    alt={president.role}
+                    fill
+                    className="object-cover object-center"
+                  />
+                </div>
+                <div className="mt-5">
+                  <p className="text-lg font-semibold text-slate-900">{president.name}</p>
+                  <p className="mt-1 text-sm font-medium text-slate-600">{president.title}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
         {/* CTA */}
-        <div className="mt-8 flex flex-col items-center gap-3 px-4 sm:mt-12 sm:flex-row sm:justify-center sm:gap-4 sm:px-6">
+        <div className="mt-8 flex flex-col items-center gap-3 px-4 sm:mt-10 sm:flex-row sm:justify-center sm:gap-4 sm:px-6">
           <a
             href="/register"
             className="rounded-full bg-gradient-to-r from-orange-500 to-orange-400 px-6 py-3 text-sm font-medium text-white transition hover:scale-[1.03] hover:shadow-xl hover:shadow-orange-500/30 sm:px-8 sm:py-4 sm:text-base"
