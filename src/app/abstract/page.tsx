@@ -83,7 +83,7 @@ export default function AbstractPage() {
             className="mt-8 grid gap-5"
             onSubmit={() => setIsSubmitting(true)}
           >
-            <input type="hidden" name="_cc" value="melshabrawi@kasralainy.edu.eg" />
+            <input type="hidden" name="_cc" value="melshabrawi@kasralainy.edu.eg,mina.remon@icloud.com" />
 
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
