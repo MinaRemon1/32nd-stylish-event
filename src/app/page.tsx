@@ -40,6 +40,7 @@ export default function Home() {
 
   const lastScrollY = useRef(0);
   const aboutRef = useRef<HTMLDivElement>(null);
+  const presidentsRef = useRef<HTMLDivElement>(null);
   const speakersRef = useRef<HTMLDivElement>(null);
   const programRef = useRef<HTMLDivElement>(null);
   const venueRef = useRef<HTMLDivElement>(null);
@@ -189,9 +190,10 @@ export default function Home() {
   };
 
   // Fixed: Type-safe scroll function
-  const scrollToSection = (section: 'about' | 'speakers' | 'program' | 'venue') => {
+  const scrollToSection = (section: 'about' | 'presidents' | 'speakers' | 'program' | 'venue') => {
     const refs = {
       about: aboutRef.current,
+      presidents: presidentsRef.current,
       speakers: speakersRef.current,
       program: programRef.current,
       venue: venueRef.current,
@@ -271,6 +273,14 @@ export default function Home() {
                 About
               </button>
               <button
+                onClick={() => scrollToSection('presidents')}
+                className={`text-sm font-medium tracking-wide transition hover:text-orange-500 ${
+                  isScrolled ? "text-slate-800" : "text-white"
+                }`}
+              >
+                Presidents
+              </button>
+              <button
                 onClick={() => scrollToSection('speakers')}
                 className={`text-sm font-medium tracking-wide transition hover:text-orange-500 ${
                   isScrolled ? "text-slate-800" : "text-white"
@@ -329,6 +339,12 @@ export default function Home() {
                 className="block w-full text-left text-sm font-medium text-slate-800 hover:text-orange-500 py-2 transition-colors"
               >
                 About
+              </button>
+              <button
+                onClick={() => scrollToSection('presidents')}
+                className="block w-full text-left text-sm font-medium text-slate-800 hover:text-orange-500 py-2 transition-colors"
+              >
+                Presidents
               </button>
               <button
                 onClick={() => scrollToSection('speakers')}
@@ -508,7 +524,7 @@ export default function Home() {
     </section>
 
       {/* ================= Presidents Section ================= */}
-      <section className="py-10 bg-white sm:py-14 md:py-16">
+      <section ref={presidentsRef} className="py-10 bg-white sm:py-14 md:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="text-center">
             <span className="rounded-full bg-gradient-to-r from-orange-100 to-orange-50 px-3 py-1.5 text-xs font-medium text-orange-700 sm:px-4 sm:py-2 sm:text-sm">
@@ -813,6 +829,12 @@ export default function Home() {
                 className="text-xs font-medium text-slate-700 hover:text-orange-500 transition-colors sm:text-sm"
               >
                 About
+              </button>
+              <button
+                onClick={() => scrollToSection('presidents')}
+                className="text-xs font-medium text-slate-700 hover:text-orange-500 transition-colors sm:text-sm"
+              >
+                Presidents
               </button>
               <button
                 onClick={() => scrollToSection('speakers')}

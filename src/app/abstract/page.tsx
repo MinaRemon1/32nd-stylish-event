@@ -77,6 +77,32 @@ export default function AbstractPage() {
             </p>
           </div>
 
+          <div className="mt-6 rounded-2xl border border-red-200 bg-gradient-to-r from-red-50 to-rose-50 p-4 shadow-sm shadow-red-100/60 sm:p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-red-600">
+              Important Dates
+            </p>
+
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <div className="rounded-xl border border-red-100 bg-white/80 px-4 py-3">
+                <p className="text-xs font-semibold uppercase tracking-wide text-red-500">
+                  Deadline for Abstract Submission
+                </p>
+                <p className="mt-1 text-base font-bold text-red-700 sm:text-lg">
+                  June, 1st, 2026
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-red-100 bg-white/80 px-4 py-3">
+                <p className="text-xs font-semibold uppercase tracking-wide text-red-500">
+                  Abstract Acceptance Notification
+                </p>
+                <p className="mt-1 text-base font-bold text-red-700 sm:text-lg">
+                  June 15th, 2026
+                </p>
+              </div>
+            </div>
+          </div>
+
           <form
             action="https://formspree.io/f/xgozbqoy"
             method="POST"
