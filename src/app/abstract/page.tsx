@@ -2,10 +2,48 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const abstractSubmissionDeadline = new Date("2026-06-01T00:00:00+03:00");
+const abstractAcceptanceNotificationDate = new Date("2026-06-15T00:00:00+03:00");
+
+function getDeadlineStatuses() {
+  const now = new Date();
+
+  return {
+    isAbstractSubmissionClosed: now >= abstractSubmissionDeadline,
+    isAbstractAcceptanceNotificationClosed: now >= abstractAcceptanceNotificationDate,
+  };
+}
 
 export default function AbstractPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [
+    { isAbstractSubmissionClosed, isAbstractAcceptanceNotificationClosed },
+    setDeadlineStatuses,
+  ] = useState({
+    isAbstractSubmissionClosed: false,
+    isAbstractAcceptanceNotificationClosed: false,
+  });
+
+  useEffect(() => {
+    setDeadlineStatuses(getDeadlineStatuses());
+
+    const statusRefreshInterval = window.setInterval(() => {
+      setDeadlineStatuses(getDeadlineStatuses());
+    }, 60_000);
+
+    return () => window.clearInterval(statusRefreshInterval);
+  }, []);
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    if (isAbstractSubmissionClosed) {
+      event.preventDefault();
+      return;
+    }
+
+    setIsSubmitting(true);
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-slate-50">
@@ -88,7 +126,7 @@ export default function AbstractPage() {
                   Deadline for Abstract Submission
                 </p>
                 <p className="mt-1 text-base font-bold text-red-700 sm:text-lg">
-                  June, 1st, 2026
+                  {isAbstractSubmissionClosed ? "Closed" : "June, 1st, 2026"}
                 </p>
               </div>
 
@@ -97,7 +135,7 @@ export default function AbstractPage() {
                   Abstract Acceptance Notification
                 </p>
                 <p className="mt-1 text-base font-bold text-red-700 sm:text-lg">
-                  June 15th, 2026
+                  {isAbstractAcceptanceNotificationClosed ? "Closed" : "June 15th, 2026"}
                 </p>
               </div>
             </div>
@@ -107,66 +145,68 @@ export default function AbstractPage() {
             action="https://formspree.io/f/xgozbqoy"
             method="POST"
             className="mt-8 grid gap-5"
-            onSubmit={() => setIsSubmitting(true)}
+            onSubmit={handleSubmit}
           >
             <input type="hidden" name="_cc" value="melshabrawi@kasralainy.edu.eg,mina.remon@icloud.com" />
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div>
-                <label className="text-sm font-semibold text-slate-700">Name</label>
-                <input
-                  type="text"
-                  name="Name"
-                  required
-                  className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-orange-300 focus:ring-2 focus:ring-orange-100"
-                  placeholder="Full name"
-                />
+            <fieldset disabled={isAbstractSubmissionClosed || isSubmitting} className="grid gap-5">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label className="text-sm font-semibold text-slate-700">Name</label>
+                  <input
+                    type="text"
+                    name="Name"
+                    required
+                    className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-orange-300 focus:ring-2 focus:ring-orange-100 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-500"
+                    placeholder="Full name"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-semibold text-slate-700">Affiliation</label>
+                  <input
+                    type="text"
+                    name="Affiliation"
+                    required
+                    className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-orange-300 focus:ring-2 focus:ring-orange-100 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-500"
+                    placeholder="Organization / Institution"
+                  />
+                </div>
               </div>
-              <div>
-                <label className="text-sm font-semibold text-slate-700">Affiliation</label>
-                <input
-                  type="text"
-                  name="Affiliation"
-                  required
-                  className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-orange-300 focus:ring-2 focus:ring-orange-100"
-                  placeholder="Organization / Institution"
-                />
-              </div>
-            </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div>
-                <label className="text-sm font-semibold text-slate-700">Email</label>
-                <input
-                  type="email"
-                  name="Email"
-                  required
-                  className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-orange-300 focus:ring-2 focus:ring-orange-100"
-                  placeholder="you@example.com"
-                />
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label className="text-sm font-semibold text-slate-700">Email</label>
+                  <input
+                    type="email"
+                    name="Email"
+                    required
+                    className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-orange-300 focus:ring-2 focus:ring-orange-100 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-500"
+                    placeholder="you@example.com"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-semibold text-slate-700">Phone Number</label>
+                  <input
+                    type="tel"
+                    name="Phone Number"
+                    required
+                    className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-orange-300 focus:ring-2 focus:ring-orange-100 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-500"
+                    placeholder="+20 ..."
+                  />
+                </div>
               </div>
-              <div>
-                <label className="text-sm font-semibold text-slate-700">Phone Number</label>
-                <input
-                  type="tel"
-                  name="Phone Number"
-                  required
-                  className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-orange-300 focus:ring-2 focus:ring-orange-100"
-                  placeholder="+20 ..."
-                />
-              </div>
-            </div>
 
-            <div>
-              <label className="text-sm font-semibold text-slate-700">Abstract</label>
-              <textarea
-                name="Abstract"
-                rows={8}
-                required
-                className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-orange-300 focus:ring-2 focus:ring-orange-100"
-                placeholder="Paste your abstract here (300 words)."
-              />
-            </div>
+              <div>
+                <label className="text-sm font-semibold text-slate-700">Abstract</label>
+                <textarea
+                  name="Abstract"
+                  rows={8}
+                  required
+                  className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-orange-300 focus:ring-2 focus:ring-orange-100 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-500"
+                  placeholder="Paste your abstract here (300 words)."
+                />
+              </div>
+            </fieldset>
 
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               {/* <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
@@ -179,10 +219,14 @@ export default function AbstractPage() {
               </div> */}
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isAbstractSubmissionClosed || isSubmitting}
                 className="rounded-full bg-gradient-to-r from-orange-500 to-orange-400 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-200/50 transition hover:scale-[1.02] hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-70"
               >
-                {isSubmitting ? "Submitting..." : "Submit abstract"}
+                {isAbstractSubmissionClosed
+                  ? "Abstract submission closed"
+                  : isSubmitting
+                    ? "Submitting..."
+                    : "Submit abstract"}
               </button>
             </div>
           </form>
