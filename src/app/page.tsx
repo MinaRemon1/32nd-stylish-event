@@ -304,6 +304,14 @@ export default function Home() {
               >
                 Abstract
               </Link>
+              <Link
+                href="/become-a-sponser"
+                className={`text-sm font-medium tracking-wide transition hover:text-orange-500 ${
+                  isScrolled ? "text-slate-800" : "text-white"
+                }`}
+              >
+                Sponsor
+              </Link>
               <button
                 onClick={() => scrollToSection('venue')}
                 className={`text-sm font-medium tracking-wide transition hover:text-orange-500 ${
@@ -364,6 +372,12 @@ export default function Home() {
               >
                 Abstract
               </Link>
+              <Link
+                href="/become-a-sponser"
+                className="block w-full text-left text-sm font-medium text-slate-800 hover:text-orange-500 py-2 transition-colors"
+              >
+                Sponsor
+              </Link>
               <button
                 onClick={() => scrollToSection('venue')}
                 className="block w-full text-left text-sm font-medium text-slate-800 hover:text-orange-500 py-2 transition-colors"
@@ -412,6 +426,12 @@ export default function Home() {
               className="rounded-full bg-gradient-to-r from-orange-500 to-orange-400 px-6 py-3 text-sm font-medium text-white transition hover:scale-[1.03] hover:shadow-xl hover:shadow-orange-500/30 sm:px-8 sm:py-4 sm:text-base"
             >
               Register Now
+            </a>
+            <a
+              href="/become-a-sponser"
+              className="rounded-full border border-white/40 px-6 py-3 text-sm font-medium text-white transition hover:scale-[1.03] hover:bg-white/15 sm:px-8 sm:py-4 sm:text-base"
+            >
+              Become a Sponsor
             </a>
           </div>
         </div>
@@ -853,6 +873,12 @@ export default function Home() {
                 className="text-xs font-medium text-slate-700 hover:text-orange-500 transition-colors sm:text-sm"
               >
                 Abstract
+              </Link>
+              <Link
+                href="/become-a-sponser"
+                className="text-xs font-medium text-slate-700 hover:text-orange-500 transition-colors sm:text-sm"
+              >
+                Sponsor
               </Link>
               <button
                 onClick={() => scrollToSection('venue')}

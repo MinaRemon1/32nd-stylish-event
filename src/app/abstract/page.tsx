@@ -27,13 +27,18 @@ export default function AbstractPage() {
   });
 
   useEffect(() => {
-    setDeadlineStatuses(getDeadlineStatuses());
+    const initialStatusRefresh = window.setTimeout(() => {
+      setDeadlineStatuses(getDeadlineStatuses());
+    }, 0);
 
     const statusRefreshInterval = window.setInterval(() => {
       setDeadlineStatuses(getDeadlineStatuses());
     }, 60_000);
 
-    return () => window.clearInterval(statusRefreshInterval);
+    return () => {
+      window.clearTimeout(initialStatusRefresh);
+      window.clearInterval(statusRefreshInterval);
+    };
   }, []);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
