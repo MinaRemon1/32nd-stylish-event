@@ -263,7 +263,7 @@ export default function Home() {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8 lg:gap-12">
+            <div className="hidden md:flex items-center gap-6 lg:gap-8">
               <button
                 onClick={() => scrollToSection('about')}
                 className={`text-sm font-medium tracking-wide transition hover:text-orange-500 ${
@@ -312,6 +312,14 @@ export default function Home() {
               >
                 Sponsor
               </Link>
+              <Link
+                href="/national-faculty"
+                className={`text-sm font-medium tracking-wide transition hover:text-orange-500 ${
+                  isScrolled ? "text-slate-800" : "text-white"
+                }`}
+              >
+                National Faculty
+              </Link>
               <button
                 onClick={() => scrollToSection('venue')}
                 className={`text-sm font-medium tracking-wide transition hover:text-orange-500 ${
@@ -338,7 +346,7 @@ export default function Home() {
           <div 
             ref={mobileMenuRef}
             className={`md:hidden absolute top-full left-0 right-0 bg-white shadow-lg transition-all duration-300 overflow-hidden ${
-              isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+              isMobileMenuOpen ? "max-h-[28rem] opacity-100" : "max-h-0 opacity-0"
             }`}
           >
             <div className="px-4 py-4 space-y-3 sm:px-6">
@@ -377,6 +385,12 @@ export default function Home() {
                 className="block w-full text-left text-sm font-medium text-slate-800 hover:text-orange-500 py-2 transition-colors"
               >
                 Sponsor
+              </Link>
+              <Link
+                href="/national-faculty"
+                className="block w-full text-left text-sm font-medium text-slate-800 hover:text-orange-500 py-2 transition-colors"
+              >
+                National Faculty
               </Link>
               <button
                 onClick={() => scrollToSection('venue')}
