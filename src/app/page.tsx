@@ -674,7 +674,7 @@ export default function Home() {
                     src={speaker.photo}
                     alt={speaker.name}
                     fill
-                    className="object-cover object-center"
+                    className={`object-cover ${speaker.photo === "/speaker11.jpg" ? "object-top" : "object-center"}`}
                   />
                 </div>
                 <div className="mt-4 text-center sm:mt-6">
