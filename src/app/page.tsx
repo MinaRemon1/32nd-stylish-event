@@ -119,6 +119,30 @@ export default function Home() {
       photo: "/speaker9.JPG",
       topics: [],
     },
+    {
+      id: 10,
+      name: "Ahmed Elhatw",
+      title: "",
+      affiliation: "United States",
+      photo: "/speaker10.jpg",
+      topics: [],
+    },
+    {
+      id: 11,
+      name: "Abdullah Shamsah",
+      title: "",
+      affiliation: "Kuwait",
+      photo: "/speaker11.jpg",
+      topics: [],
+    },
+    {
+      id: 12,
+      name: "Richard Sandler",
+      title: "",
+      affiliation: "United States",
+      photo: "/speaker12.jpg",
+      topics: [],
+    },
   ];
 
   /* ================= Countdown ================= */
