@@ -10,6 +10,7 @@ const facultyImages = [
   { src: "/nationalFaculty6.jpg", width: 2479, height: 2200 },
   { src: "/nationalFaculty7.jpg", width: 2479, height: 2179 },
   { src: "/nationalFaculty8.jpg", width: 903, height: 802 },
+  { src: "/nationalFaculty9.jpeg", width: 903, height: 802 },
 ];
 
 export default function NationalFacultyPage() {
