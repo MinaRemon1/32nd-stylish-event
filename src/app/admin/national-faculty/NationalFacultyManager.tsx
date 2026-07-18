@@ -58,6 +58,50 @@ export default function NationalFacultyManager({
     return "Something went wrong. Please try again.";
   };
 
+  const optimizePhotoInFormData = async (formData: FormData) => {
+    const photo = formData.get("photo");
+
+    if (!(photo instanceof File) || photo.size === 0 || !photo.type.startsWith("image/")) {
+      return formData;
+    }
+
+    const image = await createImageBitmap(photo);
+    const maxDimension = 720;
+    const scale = Math.min(1, maxDimension / Math.max(image.width, image.height));
+    const width = Math.max(1, Math.round(image.width * scale));
+    const height = Math.max(1, Math.round(image.height * scale));
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+
+    const context = canvas.getContext("2d");
+
+    if (!context) {
+      image.close();
+      return formData;
+    }
+
+    context.drawImage(image, 0, 0, width, height);
+    image.close();
+
+    const blob = await new Promise<Blob | null>((resolve) => {
+      canvas.toBlob(resolve, "image/webp", 0.82);
+    });
+
+    if (!blob || blob.size >= photo.size) {
+      return formData;
+    }
+
+    formData.set(
+      "photo",
+      new File([blob], `${photo.name.replace(/\.[^.]+$/, "") || "faculty"}.webp`, {
+        type: "image/webp",
+      }),
+    );
+
+    return formData;
+  };
+
   const handleAddMember = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
@@ -67,7 +111,7 @@ export default function NationalFacultyManager({
     setIsAdding(true);
 
     try {
-      await addNationalFacultyMember(formData);
+      await addNationalFacultyMember(await optimizePhotoInFormData(formData));
       form.reset();
       setIsAddModalOpen(false);
       showToast("National Faculty member added successfully.");
@@ -89,7 +133,7 @@ export default function NationalFacultyManager({
     setEditingPendingId(memberId);
 
     try {
-      await updateNationalFacultyMember(formData);
+      await updateNationalFacultyMember(await optimizePhotoInFormData(formData));
       setEditingId(null);
       showToast("National Faculty member updated successfully.");
     } catch (error) {
@@ -430,7 +474,7 @@ export default function NationalFacultyManager({
                   className="inline-flex items-center justify-center gap-2 rounded-lg bg-orange-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-500/20 transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:shadow-none"
                 >
                   {isAdding ? <LoaderCircle className="h-4 w-4 animate-spin" /> : null}
-                  {isAdding ? "Adding..." : "Add member"}
+                  {isAdding ? "Optimizing..." : "Add member"}
                 </button>
               </div>
             </div>

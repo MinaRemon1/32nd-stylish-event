@@ -2,11 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export default async function NationalFacultyPage() {
   const facultyMembers = await prisma.nationalFaculty.findMany({
     orderBy: { createdAt: "asc" },
+    select: {
+      id: true,
+      name: true,
+      country: true,
+      title: true,
+      photo: true,
+    },
   });
 
   return (
