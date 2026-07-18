@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model NationalFaculty {
+  id        Int      @id @default(autoincrement())
+  name      String
+  country   String
+  title     String
+  photo     String   @db.Text
+  createdAt DateTime @default(now())
+}

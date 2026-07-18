@@ -1,19 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
+import { prisma } from "@/lib/prisma";
 
-const facultyImages = [
-  { src: "/nationalFaculty1.jpg", width: 2479, height: 2213 },
-  { src: "/nationalFaculty2.jpg", width: 2479, height: 2191 },
-  { src: "/nationalFaculty3.jpg", width: 2479, height: 2197 },
-  { src: "/nationalFaculty4.jpg", width: 2479, height: 1704 },
-  { src: "/nationalFaculty5.jpg", width: 2479, height: 2200 },
-  { src: "/nationalFaculty6.jpg", width: 2479, height: 2200 },
-  { src: "/nationalFaculty7.jpg", width: 2479, height: 2179 },
-  { src: "/nationalFaculty8.jpg", width: 903, height: 802 },
-  { src: "/nationalFaculty9.jpeg", width: 903, height: 802 },
-];
+export const dynamic = "force-dynamic";
 
-export default function NationalFacultyPage() {
+export default async function NationalFacultyPage() {
+  const facultyMembers = await prisma.nationalFaculty.findMany({
+    orderBy: { createdAt: "asc" },
+  });
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-slate-50">
       <section className="relative min-h-[60vh] w-full overflow-hidden">
@@ -57,23 +52,48 @@ export default function NationalFacultyPage() {
         </div>
       </section>
 
-      <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
-        <div className="overflow-hidden rounded-3xl border border-orange-100 bg-white shadow-xl shadow-orange-100/40">
-          {facultyImages.map((image, index) => (
-            <div
-              key={image.src}
-              className={index === 0 ? "" : "border-t border-slate-100"}
-            >
-              <Image
-                src={image.src}
-                width={image.width}
-                height={image.height}
-                alt={`National Faculty ${index + 1}`}
-                className="block h-auto w-full"
-                sizes="(max-width: 1152px) 100vw, 1152px"
-              />
+      <main className="py-16 sm:py-20 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="text-center">
+            <span className="rounded-full bg-gradient-to-r from-orange-100 to-orange-50 px-3 py-1.5 text-xs font-medium text-orange-700 sm:px-4 sm:py-2 sm:text-sm">
+              World-Class Faculty
+            </span>
+            <h2 className="mt-4 text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl lg:text-5xl">
+              Meet Our <span className="text-orange-500">National Faculty</span>
+            </h2>
+          </div>
+
+          {facultyMembers.length > 0 ? (
+            <div className="mx-auto mt-12 grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+              {facultyMembers.map((member) => (
+                <div
+                  key={member.id}
+                  className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white p-4 text-center shadow-sm transition-all duration-300 hover:scale-[1.02] hover:border-orange-300 hover:shadow-xl sm:rounded-2xl sm:p-6"
+                >
+                  <div className="relative mx-auto h-32 w-32 overflow-hidden rounded-full bg-slate-100 ring-4 ring-white shadow-sm sm:h-40 sm:w-40 md:h-48 md:w-48">
+                    <Image
+                      src={member.photo}
+                      alt={member.name}
+                      fill
+                      unoptimized
+                      className="object-cover object-center"
+                    />
+                  </div>
+                  <div className="mt-4 sm:mt-6">
+                    <h3 className="text-lg font-bold text-slate-900 sm:text-xl">
+                      {member.name}
+                    </h3>
+                    <p className="mt-1 text-sm font-medium text-orange-600 sm:text-base">
+                      {member.title}
+                    </p>
+                    <p className="mt-0.5 text-xs text-slate-600 sm:text-sm">
+                      {member.country}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          ) : null}
         </div>
       </main>
 
