@@ -21,6 +21,10 @@ function getRequiredText(formData: FormData, key: string) {
   return String(formData.get(key) || "").trim();
 }
 
+function getOptionalText(formData: FormData, key: string) {
+  return getRequiredText(formData, key) || null;
+}
+
 async function readPhotoDataUrl(photo: FormDataEntryValue | null, required: boolean) {
   if (!(photo instanceof File) || photo.size === 0) {
     if (required) {
@@ -46,12 +50,12 @@ export async function addNationalFacultyMember(formData: FormData) {
   await requireAdminUser();
 
   const name = getRequiredText(formData, "name");
-  const country = getRequiredText(formData, "country");
-  const title = getRequiredText(formData, "title");
+  const country = getOptionalText(formData, "country");
+  const title = getOptionalText(formData, "title");
   const photoDataUrl = await readPhotoDataUrl(formData.get("photo"), true);
 
-  if (!name || !country || !title || !photoDataUrl) {
-    throw new Error("Photo, name, country, and title are required.");
+  if (!name || !photoDataUrl) {
+    throw new Error("Photo and name are required.");
   }
 
   await prisma.nationalFaculty.create({
@@ -72,16 +76,16 @@ export async function updateNationalFacultyMember(formData: FormData) {
 
   const id = Number(formData.get("id"));
   const name = getRequiredText(formData, "name");
-  const country = getRequiredText(formData, "country");
-  const title = getRequiredText(formData, "title");
+  const country = getOptionalText(formData, "country");
+  const title = getOptionalText(formData, "title");
   const photoDataUrl = await readPhotoDataUrl(formData.get("photo"), false);
 
   if (!Number.isInteger(id) || id <= 0) {
     throw new Error("Invalid National Faculty profile.");
   }
 
-  if (!name || !country || !title) {
-    throw new Error("Name, country, and title are required.");
+  if (!name) {
+    throw new Error("Name is required.");
   }
 
   await prisma.nationalFaculty.update({

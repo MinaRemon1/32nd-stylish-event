@@ -90,12 +90,16 @@ export default async function NationalFacultyPage() {
                     <h3 className="text-lg font-bold text-slate-900 sm:text-xl">
                       {member.name}
                     </h3>
-                    <p className="mt-1 text-sm font-medium text-orange-600 sm:text-base">
-                      {member.title}
-                    </p>
-                    <p className="mt-0.5 text-xs text-slate-600 sm:text-sm">
-                      {member.country}
-                    </p>
+                    {member.title ? (
+                      <p className="mt-1 text-sm font-medium text-orange-600 sm:text-base">
+                        {member.title}
+                      </p>
+                    ) : null}
+                    {member.country ? (
+                      <p className="mt-0.5 text-xs text-slate-600 sm:text-sm">
+                        {member.country}
+                      </p>
+                    ) : null}
                   </div>
                 </div>
               ))}

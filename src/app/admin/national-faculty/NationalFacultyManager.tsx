@@ -21,8 +21,8 @@ import {
 type FacultyMember = {
   id: number;
   name: string;
-  country: string;
-  title: string;
+  country: string | null;
+  title: string | null;
   photo: string;
 };
 
@@ -170,7 +170,7 @@ export default function NationalFacultyManager({
 
     return facultyMembers.filter((member) =>
       [member.name, member.country, member.title].some((value) =>
-        value.toLowerCase().includes(normalizedQuery),
+        value?.toLowerCase().includes(normalizedQuery),
       ),
     );
   }, [facultyMembers, query]);
@@ -273,19 +273,17 @@ export default function NationalFacultyManager({
                       />
                       <input
                         name="country"
-                        required
-                        defaultValue={member.country}
+                        defaultValue={member.country ?? ""}
                         disabled={editingPendingId === member.id}
                         className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-950 outline-none transition focus:border-orange-400 focus:ring-4 focus:ring-orange-100"
-                        placeholder="Country"
+                        placeholder="Country (optional)"
                       />
                       <input
                         name="title"
-                        required
-                        defaultValue={member.title}
+                        defaultValue={member.title ?? ""}
                         disabled={editingPendingId === member.id}
                         className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-950 outline-none transition focus:border-orange-400 focus:ring-4 focus:ring-orange-100"
-                        placeholder="Title"
+                        placeholder="Title (optional)"
                       />
 
                       {editError ? (
@@ -320,12 +318,16 @@ export default function NationalFacultyManager({
                         <h3 className="mt-4 text-base font-semibold text-slate-950">
                           {member.name}
                         </h3>
-                        <p className="mt-1 text-sm font-medium text-orange-600">
-                          {member.title}
-                        </p>
-                        <p className="mt-1 text-xs text-slate-600">
-                          {member.country}
-                        </p>
+                        {member.title ? (
+                          <p className="mt-1 text-sm font-medium text-orange-600">
+                            {member.title}
+                          </p>
+                        ) : null}
+                        {member.country ? (
+                          <p className="mt-1 text-xs text-slate-600">
+                            {member.country}
+                          </p>
+                        ) : null}
                       </div>
 
                       <div className="mt-4 grid grid-cols-2 gap-2">
@@ -432,10 +434,9 @@ export default function NationalFacultyManager({
                 <span className="text-sm font-medium text-slate-700">Country</span>
                 <input
                   name="country"
-                  required
                   disabled={isAdding}
                   className="mt-2 w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-orange-400 focus:bg-white focus:ring-4 focus:ring-orange-100"
-                  placeholder="Egypt"
+                  placeholder="Egypt (optional)"
                 />
               </label>
 
@@ -443,10 +444,9 @@ export default function NationalFacultyManager({
                 <span className="text-sm font-medium text-slate-700">Title</span>
                 <input
                   name="title"
-                  required
                   disabled={isAdding}
                   className="mt-2 w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-orange-400 focus:bg-white focus:ring-4 focus:ring-orange-100"
-                  placeholder="Professor of Pediatric Gastroenterology"
+                  placeholder="Professor of Pediatric Gastroenterology (optional)"
                 />
               </label>
 
